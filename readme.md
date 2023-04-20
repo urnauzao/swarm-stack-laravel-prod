@@ -44,15 +44,14 @@ docker stats
   - Com isso você visualizará atrás do IP do WSL2 a sua aplicação. Detalhe, o IP pode mudar a cada vez que você reiniciar o PC ou o próprio WSL2.
 
 - <b>Não consegui acessar a aplicação em produção pelo navegador</b>, o que fazer?
+
   - Certifique-se que seus containers docker estão em execução
   - Certifique-se que seu servidor de produção está com as portas de sua aplicação liberadas.
+  - Certifique-se que você alterou o arquivo `nginx-sites.conf` com o endereco da sua aplicação / ip do servidor de produção.
+
+- <b>Como saber se tenho um firewall?</b>
+  - Em um servidor Linux Debian, execute o comando abaixo e procure por, `iptables`, `firewalld`, `ufw` ou `csf`. O que você encotrar desta lista é o firewall de sua máquina.
 
 ```sh
-    # passo a passo de obtenção do IP do WSL2 com IFCONFIG
-
-    ## Execute no terminal WSL2:
-    sudo apt install net-tools
-    ## Depois de instalado execute
-    ifconfig
-    ## Agora localize o 'eth0' e então utiliza o endereço de IP nele apresentado, o IP estará no no campo 'inet' da rede 'eth0'.
+systemctl list-units --type=service --state=active
 ```
