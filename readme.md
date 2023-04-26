@@ -34,6 +34,24 @@ docker service ls
 docker stats
 ```
 
+- Executar aplicação docker direto
+
+```sh
+docker run -p 80:80 urnau/php82-app-2023:v1
+```
+
+- Script para upar aplicação
+
+```sh
+./up.sh
+```
+
+- Script para derrubar aplicação
+
+```sh
+./down.sh
+```
+
 ## EM CASO DE PROBLEMAS
 
 - <b>Não consegui acessar o Localhost no navegador</b>, o que fazer?
@@ -54,4 +72,35 @@ docker stats
 
 ```sh
 systemctl list-units --type=service --state=active
+```
+
+- <b>Como saber se o iptables está ativo:</b>
+  - Execute o comando abaixo.
+
+```sh
+sudo iptables -L
+```
+
+- <b>Como criar usuário no Debian?</b>
+
+```sh
+sudo useradd -m usuarioX -s /bin/bash
+sudo passwd usuarioX
+sudo usermod -aG sudo usuarioX
+```
+
+- <b>Ver logs de erros de um serviço</b>
+
+```sh
+docker service ls
+docker service ps --no-trunc application_web
+```
+
+- <b>Erro de Bridge Network, em caso de Iptables com OpenVZ</b><br>
+  Se o provedor de hospedagem não permitir a modificação do arquivo `/proc/sys/net/bridge/bridge-nf-call-iptables`, é possível contornar o problema configurando o Docker para não tentar restringir a comunicação entre contêineres. Para fazer isso, você pode adicionar a seguinte linha ao arquivo `/etc/docker/daemon.json`, caso o arquivo não exista, crie-o. Em seu conteúdo adicione a chave "iptables".
+
+```json
+{
+  "iptables": false
+}
 ```
