@@ -43,13 +43,13 @@ docker run -p 80:80 urnau/php82-app-2023:v1
 - Script para upar aplicação
 
 ```sh
-./up.sh
+sudo ./up.sh
 ```
 
 - Script para derrubar aplicação
 
 ```sh
-./down.sh
+sudo ./down.sh
 ```
 
 ## EM CASO DE PROBLEMAS
