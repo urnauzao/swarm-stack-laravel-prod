@@ -97,7 +97,7 @@ docker service ps --no-trunc application_web
 ```
 
 - <b>Erro de Bridge Network, em caso de Iptables com OpenVZ</b><br>
-  Se o provedor de hospedagem não permitir a modificação do arquivo `/proc/sys/net/bridge/bridge-nf-call-iptables`, é possível contornar o problema configurando o Docker para não tentar restringir a comunicação entre contêineres. Para fazer isso, você pode adicionar a seguinte linha ao arquivo `/etc/docker/daemon.json`, caso o arquivo não exista, crie-o. Em seu conteúdo adicione a chave "iptables".
+  Se o provedor de hospedagem não permitir a modificação do arquivo `/proc/sys/net/bridge/bridge-nf-call-iptables`, ou se o erro for: `endpoint create on GW Network failed: failed to create endpoint gateway_f9be7b2803b4 on network docker_gwbridge` é possível contornar o problema configurando o Docker para não tentar restringir a comunicação entre contêineres. Para fazer isso, você pode adicionar a seguinte linha ao arquivo `/etc/docker/daemon.json`, caso o arquivo não exista, crie-o. Em seu conteúdo adicione a chave "iptables".
 
 ```json
 {
